@@ -2,16 +2,16 @@ module.exports = {
   extends: [
     'eslint-config-airbnb-base',
   ],
-  'env': {
-        "browser": true
+  env: {
+    browser: true,
   },
-  'rules': {
+  rules: {
     'import/extensions': [
       'error',
       'ignorePackages',
       {
-        'mjs': 'always',
-      }
-   ],
-  }
+        mjs: 'always',
+      },
+    ],
+  },
 };

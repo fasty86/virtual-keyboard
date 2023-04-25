@@ -51,7 +51,10 @@ body {
   background-color: #e29898;
   border-radius: 7px;
 }
-
+.pressed{
+  background-color: #e29898;
+  border-radius: 7px;
+}
 .backspace_key {
   width: 120px;
 }
@@ -77,6 +80,6 @@ body {
 }
 
 .space_key {
-  max-width: 600px;
+  max-width: 470px;
   width: 100%;
 }
