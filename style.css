@@ -1,0 +1,82 @@
+:root {
+  --keyboard-bg-color: #00c3b3;
+  --key-bg-color: #353535;
+  --key-color: #fdf6ff;
+  /* --lock-on-color: #00ae94; */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  transition: .2s;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  margin: 0 10px;
+  row-gap: 30px;
+}
+
+.keyboard_wrapper {
+  max-width: 1008px;
+  width: 100%;
+  background-color: rgb(32, 116, 116);
+}
+
+.row {
+  display: flex;
+}
+
+.keys {
+  width: 60px;
+  height: 60px;
+  background-color: #edcfcf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  transition: .2s;
+}
+.keys:hover{
+  cursor: pointer;
+  background-color: #e29898;
+  border-radius: 7px;
+}
+
+.backspace_key {
+  width: 120px;
+}
+
+.tab_key {
+  width: 90px;
+}
+
+.slash_key {
+  width: 90px;
+}
+
+.caps_lock_key {
+  width: 128px;
+}
+
+.enter_key {
+  width: 120px;
+}
+
+.shift_key {
+  width: 124px;
+}
+
+.space_key {
+  max-width: 600px;
+  width: 100%;
+}
