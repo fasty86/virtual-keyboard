@@ -15,7 +15,10 @@ body {
   font-family: 'Lato', sans-serif;
   transition: .2s;
 }
-
+textarea{
+  padding: 20px;
+  font-size: larger;
+}
 .container {
   display: flex;
   justify-content: center;
@@ -82,4 +85,7 @@ body {
 .space_key {
   max-width: 470px;
   width: 100%;
+}
+.uppercase{
+  text-transform: uppercase;
 }

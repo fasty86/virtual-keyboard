@@ -1,6 +1,6 @@
 
 class Key{
-  constructor(code) {
+  constructor({name,which}) {
     
   }
 }

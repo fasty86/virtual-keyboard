@@ -390,7 +390,7 @@ const codes = [
     which: 91,
     key: 'Meta',
     code: 'MetaLeft',
-    Class: 'keys',
+    Class: 'keys meta',
   },
   {
     name: 'alt',
