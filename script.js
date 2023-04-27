@@ -1,4 +1,4 @@
-import { changeText } from './utils.mjs';
+import { changeText, pressShift, unpressShift } from './utils.mjs';
 import codes from './keys-map.mjs';
 
 const { body } = document;
@@ -13,6 +13,7 @@ class Keyboard {
       { start: 54, end: 65 },
     ];
     this.keys = [];
+    this.lang = 'en';
   }
 
   renderField() {
@@ -34,10 +35,10 @@ class Keyboard {
     this.keyboardKeys = keyboardKeys;
     this.field = field;
 
-    textArea.addEventListener('input', (evt) => {
-      console.log(evt);
-      // evt.preventDefault();
-    });
+    // textArea.addEventListener('input', (evt) => {
+    //   console.log(evt);
+    //   // evt.preventDefault();
+    // });
   }
 
   renderKeyboard() {
@@ -56,15 +57,32 @@ class Keyboard {
 
   renderKey({
     name, which, key, code, Class,
+    alt, ru = null, altRu,
   }) {
     const keyCode = document.createElement('div');
     keyCode.className = Class;
     keyCode.textContent = name;
+    keyCode.dataset.name = name;
     keyCode.dataset.keyCode = which;
     keyCode.dataset.code = code;
     keyCode.dataset.key = key;
     keyCode.dataset.initClass = Class;
+    keyCode.dataset.alt = alt;
+    keyCode.dataset.altRu = altRu;
+    keyCode.dataset.ru = ru;
     this.keys.push(keyCode);
+    keyCode.addEventListener('mousedown', (evt) => {
+      if (['ShiftRight', 'ShiftLeft'].includes(evt.target.dataset.code)) {
+        console.log('DOWN');
+        pressShift(this);
+      }
+    });
+    keyCode.addEventListener('mouseup', (evt) => {
+      if (['ShiftRight', 'ShiftLeft'].includes(evt.target.dataset.code)) {
+        console.log('UP');
+        unpressShift(this);
+      }
+    });
     keyCode.addEventListener('click', (evt) => {
       let caretStart = this.textArea.selectionStart;
       const caretEnd = this.textArea.selectionEnd;
@@ -94,6 +112,14 @@ class Keyboard {
           '\n',
         );
       }
+      if (evt.target.dataset.code === 'Tab') {
+        this.textArea.value = changeText(
+          this.textArea.value,
+          caretStart,
+          caretEnd,
+          '\t',
+        );
+      }
       if (evt.target.dataset.code === 'Backspace') {
         this.textArea.value = this.textArea.value.slice(0, caretStart - 1)
           + this.textArea.value.slice(caretEnd, this.textArea.value.length);
@@ -121,6 +147,17 @@ class Keyboard {
     this.field.append(this.textArea, this.keyboard);
     body.append(this.field);
   }
+
+  switchLang() {
+    this.lang = this.lang === 'en' ? 'ru' : 'en';
+    this.keys.filter((el) => {
+      console.log(el.dataset.ru);
+      return el.dataset.ru !== 'null';
+    }).forEach((el) => {
+      const btn = el;
+      btn.textContent = btn.dataset.ru;
+    });
+  }
 }
 function getCurrentKeys() {
   return document.querySelectorAll('.keys');
@@ -133,6 +170,7 @@ function getKey(code) {
 
 const keyboard = new Keyboard(codes);
 keyboard.render();
+
 document.addEventListener('keydown', (evt) => {
   evt.preventDefault();
   document.querySelector('textarea').focus();
@@ -140,8 +178,10 @@ document.addEventListener('keydown', (evt) => {
   key.classList.add('pressed');
   key.click();
   if (['ShiftRight', 'ShiftLeft'].includes(evt.code)) {
-    keyboard.getKeys().filter((el) => el.dataset.initClass === 'keys')
-      .forEach((el) => el.classList.add('uppercase'));
+    pressShift(keyboard);
+  }
+  if (evt.ctrlKey && evt.altKey) {
+    keyboard.switchLang();
   }
 });
 document.addEventListener('keyup', (evt) => {
@@ -149,8 +189,6 @@ document.addEventListener('keyup', (evt) => {
   const key = getKey(evt.code);
   key.classList.remove('pressed');
   if (['ShiftRight', 'ShiftLeft'].includes(evt.code)) {
-    keyboard.getKeys().filter((el) => el.dataset.initClass === 'keys')
-      .forEach((el) => el.classList.remove('uppercase'));
+    unpressShift(keyboard);
   }
-  // console.log(keyboard.textArea.value);
 });

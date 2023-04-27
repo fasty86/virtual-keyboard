@@ -5,6 +5,9 @@ const codes = [
     key: '`',
     code: 'Backquote',
     Class: 'keys',
+    ru: 'ё',
+    alt: '~',
+    altRu: 'ё',
   },
   {
     name: 1,
@@ -12,6 +15,8 @@ const codes = [
     key: 1,
     code: 'Digit1',
     Class: 'keys',
+    alt: '!',
+    altRu: '!',
   },
   {
     name: 2,
@@ -19,6 +24,8 @@ const codes = [
     key: 2,
     code: 'Digit2',
     Class: 'keys',
+    alt: '@',
+    altRu: '"',
   },
   {
     name: 3,
@@ -26,6 +33,8 @@ const codes = [
     key: 3,
     code: 'Digit3',
     Class: 'keys',
+    alt: '#',
+    altRu: '№',
   },
   {
     name: 4,
@@ -33,6 +42,8 @@ const codes = [
     key: 4,
     code: 'Digit4',
     Class: 'keys',
+    alt: '$',
+    altRu: ';',
   },
   {
     name: 5,
@@ -40,6 +51,8 @@ const codes = [
     key: 5,
     code: 'Digit5',
     Class: 'keys',
+    alt: '%',
+    altRu: '%',
   },
   {
     name: 6,
@@ -47,6 +60,8 @@ const codes = [
     key: 6,
     code: 'Digit6',
     Class: 'keys',
+    alt: '^',
+    altRu: ':',
   },
   {
     name: 7,
@@ -54,6 +69,8 @@ const codes = [
     key: 7,
     code: 'Digit7',
     Class: 'keys',
+    alt: '&',
+    altRu: '?',
   },
   {
     name: 8,
@@ -61,6 +78,8 @@ const codes = [
     key: 8,
     code: 'Digit8',
     Class: 'keys',
+    alt: '*',
+    altRu: '*',
   },
   {
     name: 9,
@@ -68,6 +87,8 @@ const codes = [
     key: 9,
     code: 'Digit9',
     Class: 'keys',
+    alt: '(',
+    altRu: '(',
   },
   {
     name: 0,
@@ -75,13 +96,17 @@ const codes = [
     key: 0,
     code: 'Digit0',
     Class: 'keys',
+    alt: ')',
+    altRu: ')',
   },
   {
     name: '-',
-    which: 109,
+    which: 189,
     key: '-',
-    code: 'NumpadSubtract',
+    code: 'Minus',
     Class: 'keys',
+    alt: '_',
+    altRu: '_',
   },
   {
     name: '=',
@@ -89,6 +114,8 @@ const codes = [
     key: '=',
     code: 'Equal',
     Class: 'keys',
+    alt: '+',
+    altRu: '+',
   },
   {
     name: 'backspace',
@@ -110,6 +137,7 @@ const codes = [
     key: 'q',
     code: 'KeyQ',
     Class: 'keys',
+    ru: 'й',
   },
   {
     name: 'w',
@@ -117,6 +145,7 @@ const codes = [
     key: 'w',
     code: 'KeyW',
     Class: 'keys',
+    ru: 'ц',
   },
   {
     name: 'e',
@@ -124,6 +153,7 @@ const codes = [
     key: 'e',
     code: 'KeyE',
     Class: 'keys',
+    ru: 'у',
   },
   {
     name: 'r',
@@ -131,6 +161,7 @@ const codes = [
     key: 'r',
     code: 'KeyR',
     Class: 'keys',
+    ru: 'к',
   },
   {
     name: 't',
@@ -138,6 +169,7 @@ const codes = [
     key: 't',
     code: 'KeyT',
     Class: 'keys',
+    ru: 'е',
   },
   {
     name: 'y',
@@ -145,6 +177,7 @@ const codes = [
     key: 'y',
     code: 'KeyY',
     Class: 'keys',
+    ru: 'н',
   },
   {
     name: 'u',
@@ -152,6 +185,7 @@ const codes = [
     key: 'u',
     code: 'KeyU',
     Class: 'keys',
+    ru: 'г',
   },
   {
     name: 'i',
@@ -159,6 +193,7 @@ const codes = [
     key: 'i',
     code: 'KeyI',
     Class: 'keys',
+    ru: 'ш',
   },
   {
     name: 'o',
@@ -166,6 +201,7 @@ const codes = [
     key: 'o',
     code: 'KeyO',
     Class: 'keys',
+    ru: 'щ',
   },
   {
     name: 'p',
@@ -173,6 +209,7 @@ const codes = [
     key: 'p',
     code: 'KeyP',
     Class: 'keys',
+    ru: 'з',
   },
   {
     name: '[',
@@ -180,6 +217,9 @@ const codes = [
     key: '[',
     code: 'BracketLeft',
     Class: 'keys',
+    ru: 'х',
+    alt: '{',
+    altRu: 'Х',
   },
   {
     name: ']',
@@ -187,6 +227,9 @@ const codes = [
     key: ']',
     code: 'BracketRight',
     Class: 'keys',
+    ru: 'ъ',
+    alt: '}',
+    altRu: 'Ъ',
   },
   {
     name: '\\',
@@ -194,6 +237,8 @@ const codes = [
     key: '\\',
     code: 'Backslash',
     Class: 'keys slash_key',
+    alt: '|',
+    altRu: '/',
   },
   {
     name: 'caps lock',
@@ -208,6 +253,7 @@ const codes = [
     key: 'a',
     code: 'KeyA',
     Class: 'keys',
+    ru: 'ф',
   },
   {
     name: 's',
@@ -215,6 +261,7 @@ const codes = [
     key: 's',
     code: 'KeyS',
     Class: 'keys',
+    ru: 'ы',
   },
   {
     name: 'd',
@@ -222,6 +269,7 @@ const codes = [
     key: 'd',
     code: 'KeyD',
     Class: 'keys',
+    ru: 'в',
   },
   {
     name: 'f',
@@ -229,6 +277,7 @@ const codes = [
     key: 'f',
     code: 'KeyF',
     Class: 'keys',
+    ru: 'а',
   },
   {
     name: 'g',
@@ -236,6 +285,7 @@ const codes = [
     key: 'g',
     code: 'KeyG',
     Class: 'keys',
+    ru: 'п',
   },
   {
     name: 'h',
@@ -243,6 +293,7 @@ const codes = [
     key: 'h',
     code: 'KeyH',
     Class: 'keys',
+    ru: 'р',
   },
 
   {
@@ -251,6 +302,7 @@ const codes = [
     key: 'j',
     code: 'KeyJ',
     Class: 'keys',
+    ru: 'о',
   },
   {
     name: 'k',
@@ -258,6 +310,7 @@ const codes = [
     key: 'k',
     code: 'KeyK',
     Class: 'keys',
+    ru: 'л',
   },
   {
     name: 'l',
@@ -265,6 +318,7 @@ const codes = [
     key: 'l',
     code: 'KeyL',
     Class: 'keys',
+    ru: 'д',
   },
   {
     name: ';',
@@ -272,6 +326,9 @@ const codes = [
     key: ';',
     code: 'Semicolon',
     Class: 'keys',
+    ru: 'ж',
+    alt: ':',
+    altRu: 'Ж',
   },
   {
     name: "'",
@@ -279,6 +336,9 @@ const codes = [
     key: "'",
     code: 'Quote',
     Class: 'keys',
+    ru: 'э',
+    alt: '"',
+    altRu: 'Э',
   },
   {
     name: 'enter',
@@ -300,6 +360,7 @@ const codes = [
     key: 'z',
     code: 'KeyZ',
     Class: 'keys',
+    ru: 'я',
   },
   {
     name: 'x',
@@ -307,6 +368,7 @@ const codes = [
     key: 'x',
     code: 'KeyX',
     Class: 'keys',
+    ru: 'ч',
   },
   {
     name: 'c',
@@ -314,6 +376,7 @@ const codes = [
     key: 'c',
     code: 'KeyC',
     Class: 'keys',
+    ru: 'с',
   },
   {
     name: 'v',
@@ -321,6 +384,7 @@ const codes = [
     key: 'v',
     code: 'KeyV',
     Class: 'keys',
+    ru: 'м',
   },
   {
     name: 'b',
@@ -328,6 +392,7 @@ const codes = [
     key: 'b',
     code: 'KeyB',
     Class: 'keys',
+    ru: 'и',
   },
   {
     name: 'n',
@@ -335,6 +400,7 @@ const codes = [
     key: 'n',
     code: 'KeyN',
     Class: 'keys',
+    ru: 'т',
   },
   {
     name: 'm',
@@ -342,6 +408,7 @@ const codes = [
     key: 'm',
     code: 'KeyM',
     Class: 'keys',
+    ru: 'ь',
   },
   {
     name: ',',
@@ -349,6 +416,9 @@ const codes = [
     key: ',',
     code: 'Comma',
     Class: 'keys',
+    ru: 'б',
+    alt: '<',
+    altRu: 'Б',
   },
   {
     name: '.',
@@ -356,6 +426,9 @@ const codes = [
     key: '.',
     code: 'Period',
     Class: 'keys',
+    ru: 'ю',
+    alt: '>',
+    altRu: 'Ю',
   },
   {
     name: '/',
@@ -363,6 +436,9 @@ const codes = [
     key: '/',
     code: 'Slash',
     Class: 'keys',
+    alt: '?',
+    ru: '.',
+    altRu: ',',
   },
   {
     name: '↑',
