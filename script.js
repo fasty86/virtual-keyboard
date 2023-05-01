@@ -79,13 +79,11 @@ class Keyboard {
     keyCode.addEventListener('mousedown', (evt) => {
       evt.preventDefault();
       if (['ShiftRight', 'ShiftLeft'].includes(evt.target.dataset.code)) {
-        console.log('DOWN');
         pressShift(this);
       }
     });
     keyCode.addEventListener('mouseup', (evt) => {
       if (['ShiftRight', 'ShiftLeft'].includes(evt.target.dataset.code)) {
-        console.log('UP');
         unpressShift(this);
       }
     });
@@ -93,7 +91,6 @@ class Keyboard {
       let caretStart = this.textArea.selectionStart;
       const caretEnd = this.textArea.selectionEnd;
       evt.preventDefault();
-      // this.textArea.focus();
       if (evt.target.dataset.initClass === 'keys') {
         this.textArea.value = changeText(
           this.textArea.value,
@@ -165,19 +162,12 @@ class Keyboard {
   switchLang() {
     this.lang = this.lang === 'en' ? 'ru' : 'en';
     if (this.lang === 'ru') {
-      this.keys.filter((el) => {
-        console.log(el.dataset.ru);
-        return el.dataset.ru !== 'null';
-      }).forEach((el) => {
+      this.keys.filter((el) => el.dataset.ru !== 'null').forEach((el) => {
         const btn = el;
         btn.textContent = btn.dataset.ru;
       });
     } else {
-      console.log(this.keys);
-      this.keys.filter((el) => {
-        console.log(el.dataset.ru);
-        return el.dataset.ru !== 'null';
-      }).forEach((el) => {
+      this.keys.filter((el) => el.dataset.ru !== 'null').forEach((el) => {
         const btn = el;
         btn.textContent = btn.dataset.name;
       });
@@ -198,7 +188,6 @@ keyboard.render();
 
 document.addEventListener('keydown', (evt) => {
   evt.preventDefault();
-  // document.querySelector('textarea').focus();
   const key = getKey(evt.code);
   key.classList.add('pressed');
   key.click();
