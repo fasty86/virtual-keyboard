@@ -9,10 +9,10 @@ class Keyboard {
     this.layout = layout;
     this.settings = [
       { start: 0, end: 14 },
-      { start: 14, end: 28 },
-      { start: 28, end: 41 },
-      { start: 41, end: 54 },
-      { start: 54, end: 65 },
+      { start: 14, end: 29 },
+      { start: 29, end: 42 },
+      { start: 42, end: 55 },
+      { start: 55, end: 66 },
     ];
     this.keys = [];
     this.lang = 'en';
@@ -91,7 +91,7 @@ class Keyboard {
     });
     keyCode.addEventListener('click', (evt) => {
       let caretStart = this.textArea.selectionStart;
-      const caretEnd = this.textArea.selectionEnd;
+      let caretEnd = this.textArea.selectionEnd;
       evt.preventDefault();
       if (evt.target.dataset.initClass === 'keys') {
         this.textArea.value = changeText(
@@ -137,6 +137,11 @@ class Keyboard {
         this.textArea.value = this.textArea.value.slice(0, caretStart - 1)
           + this.textArea.value.slice(caretEnd, this.textArea.value.length);
         caretStart -= 2;
+      }
+      if (evt.target.dataset.code === 'Delete') {
+        this.textArea.value = this.textArea.value.slice(0, caretStart)
+          + this.textArea.value.slice(caretEnd += 1, this.textArea.value.length);
+        caretStart -= 1;
       }
 
       if (['CapsLock'].includes(evt.target.dataset.code)) {

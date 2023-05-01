@@ -242,6 +242,13 @@ const codes = [
     altRu: '/',
   },
   {
+    name: 'del',
+    which: 46,
+    key: 'Delete',
+    code: 'Delete',
+    Class: 'keys delete',
+  },
+  {
     name: 'caps lock',
     which: 20,
     key: 'CapsLock',
