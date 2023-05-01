@@ -1,4 +1,6 @@
-import { changeText, pressShift, unpressShift, savelang , getLang } from './utils.mjs';
+import {
+  changeText, pressShift, unpressShift, savelang, getLang,
+} from './utils.mjs';
 import codes from './keys-map.mjs';
 
 const { body } = document;
