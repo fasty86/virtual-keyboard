@@ -1,4 +1,4 @@
-import { changeText, pressShift, unpressShift } from './utils.mjs';
+import { changeText, pressShift, unpressShift, savelang , getLang } from './utils.mjs';
 import codes from './keys-map.mjs';
 
 const { body } = document;
@@ -157,16 +157,19 @@ class Keyboard {
     this.keyboard.append(this.keyboardKeys);
     this.field.append(this.h1, this.textArea, this.keyboard, this.info, this.infoLang);
     body.append(this.field);
+    if (getLang() === 'ru' && this.lang === 'en') this.switchLang();
   }
 
   switchLang() {
     this.lang = this.lang === 'en' ? 'ru' : 'en';
     if (this.lang === 'ru') {
+      savelang('ru');
       this.keys.filter((el) => el.dataset.ru !== 'null').forEach((el) => {
         const btn = el;
         btn.textContent = btn.dataset.ru;
       });
     } else {
+      savelang('en');
       this.keys.filter((el) => el.dataset.ru !== 'null').forEach((el) => {
         const btn = el;
         btn.textContent = btn.dataset.name;

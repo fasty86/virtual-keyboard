@@ -26,5 +26,13 @@ function unpressShift(keyboard) {
       else btn.textContent = el.dataset.ru !== 'null' ? el.dataset.ru : el.dataset.name;
     });
 }
-
-export { changeText, pressShift, unpressShift };
+function savelang(lang = 'en') {
+  localStorage.setItem('lang', lang);
+}
+function getLang() {
+  const lang = localStorage.getItem('lang');
+  return lang !== 'undefined' ? lang : 'en';
+}
+export {
+  changeText, pressShift, unpressShift, savelang, getLang,
+};
