@@ -2,7 +2,6 @@
   --keyboard-bg-color: #00c3b3;
   --key-bg-color: #353535;
   --key-color: #fdf6ff;
-  /* --lock-on-color: #00ae94; */
 }
 
 * {
@@ -27,7 +26,7 @@ textarea{
   height: 100vh;
   flex-direction: column;
   margin: 0 10px;
-  row-gap: 30px;
+  row-gap: 10px;
 }
 
 .keyboard_wrapper {

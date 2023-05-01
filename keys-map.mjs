@@ -238,6 +238,7 @@ const codes = [
     code: 'Backslash',
     Class: 'keys slash_key',
     alt: '|',
+    ru: '\\',
     altRu: '/',
   },
   {

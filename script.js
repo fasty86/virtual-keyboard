@@ -21,24 +21,29 @@ class Keyboard {
     const textArea = document.createElement('textarea');
     const keyboard = document.createElement('div');
     const keyboardKeys = document.createElement('div');
+    const h1 = document.createElement('h1');
+    const info = document.createElement('p');
+    const infoLang = document.createElement('p');
 
     field.className = 'container';
     textArea.className = 'text';
     textArea.id = 'text';
     textArea.name = 'text';
-    textArea.rows = 15;
+    textArea.rows = 11;
     textArea.cols = 100;
+    textArea.autofocus = true;
     this.textArea = textArea;
     keyboard.className = 'keyboard_wrapper';
     this.keyboard = keyboard;
     keyboardKeys.className = 'keyboard_keys';
     this.keyboardKeys = keyboardKeys;
     this.field = field;
-
-    // textArea.addEventListener('input', (evt) => {
-    //   console.log(evt);
-    //   // evt.preventDefault();
-    // });
+    h1.textContent = 'RSS Virtual keyboard';
+    info.textContent = 'Клавиатура создана в операционной систему Windows';
+    infoLang.textContent = 'Для переключения языка, используется комбинация клавиш: ctrl + alt';
+    this.h1 = h1;
+    this.info = info;
+    this.infoLang = infoLang;
   }
 
   renderKeyboard() {
@@ -72,6 +77,7 @@ class Keyboard {
     keyCode.dataset.ru = ru;
     this.keys.push(keyCode);
     keyCode.addEventListener('mousedown', (evt) => {
+      evt.preventDefault();
       if (['ShiftRight', 'ShiftLeft'].includes(evt.target.dataset.code)) {
         console.log('DOWN');
         pressShift(this);
@@ -87,7 +93,7 @@ class Keyboard {
       let caretStart = this.textArea.selectionStart;
       const caretEnd = this.textArea.selectionEnd;
       evt.preventDefault();
-      this.textArea.focus();
+      // this.textArea.focus();
       if (evt.target.dataset.initClass === 'keys') {
         this.textArea.value = changeText(
           this.textArea.value,
@@ -102,6 +108,14 @@ class Keyboard {
           caretStart,
           caretEnd,
           ' ',
+        );
+      }
+      if (evt.target.dataset.code === 'Backslash') {
+        this.textArea.value = changeText(
+          this.textArea.value,
+          caretStart,
+          caretEnd,
+          evt.target.classList.contains('uppercase') ? evt.target.textContent.toUpperCase() : evt.target.textContent,
         );
       }
       if (evt.target.dataset.code === 'Enter') {
@@ -131,7 +145,7 @@ class Keyboard {
           .forEach((el) => el.classList.toggle('uppercase'));
       }
 
-      this.textArea.setSelectionRange(caretStart + 1, caretStart + 1);
+      if (!['ShiftRight', 'ShiftLeft'].includes(evt.target.dataset.code)) this.textArea.setSelectionRange(caretStart + 1, caretStart + 1);
     });
     return keyCode;
   }
@@ -144,19 +158,30 @@ class Keyboard {
     this.renderField();
     this.renderKeyboard();
     this.keyboard.append(this.keyboardKeys);
-    this.field.append(this.textArea, this.keyboard);
+    this.field.append(this.h1, this.textArea, this.keyboard, this.info, this.infoLang);
     body.append(this.field);
   }
 
   switchLang() {
     this.lang = this.lang === 'en' ? 'ru' : 'en';
-    this.keys.filter((el) => {
-      console.log(el.dataset.ru);
-      return el.dataset.ru !== 'null';
-    }).forEach((el) => {
-      const btn = el;
-      btn.textContent = btn.dataset.ru;
-    });
+    if (this.lang === 'ru') {
+      this.keys.filter((el) => {
+        console.log(el.dataset.ru);
+        return el.dataset.ru !== 'null';
+      }).forEach((el) => {
+        const btn = el;
+        btn.textContent = btn.dataset.ru;
+      });
+    } else {
+      console.log(this.keys);
+      this.keys.filter((el) => {
+        console.log(el.dataset.ru);
+        return el.dataset.ru !== 'null';
+      }).forEach((el) => {
+        const btn = el;
+        btn.textContent = btn.dataset.name;
+      });
+    }
   }
 }
 function getCurrentKeys() {
@@ -173,7 +198,7 @@ keyboard.render();
 
 document.addEventListener('keydown', (evt) => {
   evt.preventDefault();
-  document.querySelector('textarea').focus();
+  // document.querySelector('textarea').focus();
   const key = getKey(evt.code);
   key.classList.add('pressed');
   key.click();
